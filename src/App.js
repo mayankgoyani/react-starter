@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Heading from './Heading';
+import Cards from './Cards';
+import db from './db/products';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Row, Col } from 'react-bootstrap';
+
+
+
+
+const heading = (data) => {
+  return (
+    <Cards
+      img={data.images}
+      name={data.name}
+      desc={data.description}
+      price={data.price}
+    />
+  );
+}
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Heading />
+      <Container>
+        <Row>
+          {db.map(heading)}
+        </Row>
+      </Container>
+
+    </>
   );
 }
 
